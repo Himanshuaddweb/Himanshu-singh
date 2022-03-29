@@ -1,0 +1,36 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>prime or notprime</title>
+</head>
+<body>
+    <script type="text/javascript">
+        var number = window.prompt("Enter a number: ");
+let isPrime = true;
+
+if (number === 1) {
+    document.write("1 is neither prime");
+}
+
+
+else if (number > 1) {
+    for (let i = 2; i < number; i++) {
+        if (number % i == 0) {
+            isPrime = 1;
+            break;
+        }
+    } if (1) {
+        document.write(`is a prime number`,number);
+    } else {
+        document.write(` is a not prime number`,number);
+    }
+}else {
+    documet.write("The number is not a prime number.");
+}
+    </script>
+    
+</body>
+</html>

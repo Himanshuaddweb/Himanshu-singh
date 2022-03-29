@@ -1,0 +1,292 @@
+﻿MariaDB [task3]> select adddate("2000-01-07",10);
++--------------------------+
+| adddate("2000-01-07",10) |
++--------------------------+
+| 2000-01-17               |
++--------------------------+
+1 row in set (0.001 sec)
+
+MariaDB [task3]> select addtime("2000-01-07 09:34:21.00001"
+    -> select addtime("2000-01-07 09:34:21.00001","5.0000003");
+ERROR 1064 (42000): You have an error in your SQL syntax; check the manual that corresponds to your MariaDB server version for the right syntax to use near 'select addtime("2000-01-07 09:34:21.00001","5.0000003")' at line 2
+MariaDB [task3]> select addtime("2000-01-07 09:34:21.00001","5.0000003");
++--------------------------------------------------+
+| addtime("2000-01-07 09:34:21.00001","5.0000003") |
++--------------------------------------------------+
+| 2000-01-07 09:34:26.000010                       |
++--------------------------------------------------+
+1 row in set, 1 warning (0.001 sec)
+
+MariaDB [task3]> select curtime();
++-----------+
+| curtime() |
++-----------+
+| 17:19:56  |
++-----------+
+1 row in set (0.000 sec)
+
+MariaDB [task3]> select current_date() + 1;
++--------------------+
+| current_date() + 1 |
++--------------------+
+|           20220329 |
++--------------------+
+1 row in set (0.001 sec)
+
+MariaDB [task3]> current_time();
+ERROR 1064 (42000): You have an error in your SQL syntax; check the manual that corresponds to your MariaDB server version for the right syntax to use near 'current_time()' at line 1
+MariaDB [task3]> select current_time();
++----------------+
+| current_time() |
++----------------+
+| 17:35:53       |
++----------------+
+1 row in set (0.000 sec)
+
+MariaDB [task3]> select _timestamp();
+ERROR 1558 (HY000): Column count of mysql.proc is wrong. Expected 21, found 20. Created with MariaDB 100108, now running 100422. Please use mysql_upgrade to fix this error
+MariaDB [task3]> select current_timestamp();
++---------------------+
+| current_timestamp() |
++---------------------+
+| 2022-03-28 17:37:00 |
++---------------------+
+1 row in set (0.000 sec)
+
+MariaDB [task3]> select curtime();
++-----------+
+| curtime() |
++-----------+
+| 17:38:00  |
++-----------+
+1 row in set (0.000 sec)
+
+MariaDB [task3]> select date_format("2000-01-07","%y");
++--------------------------------+
+| date_format("2000-01-07","%y") |
++--------------------------------+
+| 00                             |
++--------------------------------+
+1 row in set (0.000 sec)
+
+MariaDB [task3]> select date_format("2000-01-07","%a");
++--------------------------------+
+| date_format("2000-01-07","%a") |
++--------------------------------+
+| Fri                            |
++--------------------------------+
+1 row in set (0.001 sec)
+
+MariaDB [task3]> select date_format("1996-01-07","%a");
++--------------------------------+
+| date_format("1996-01-07","%a") |
++--------------------------------+
+| Sun                            |
++--------------------------------+
+1 row in set (0.000 sec)
+
+MariaDB [task3]> select date_format("1996-01-07","%c");
++--------------------------------+
+| date_format("1996-01-07","%c") |
++--------------------------------+
+| 1                              |
++--------------------------------+
+1 row in set (0.001 sec)
+
+MariaDB [task3]> select date_format("1996-01-07","%b");
++--------------------------------+
+| date_format("1996-01-07","%b") |
++--------------------------------+
+| Jan                            |
++--------------------------------+
+1 row in set (0.000 sec)
+
+MariaDB [task3]> select date_format("1996-01-07","%D");
++--------------------------------+
+| date_format("1996-01-07","%D") |
++--------------------------------+
+| 7th                            |
++--------------------------------+
+1 row in set (0.000 sec)
+
+MariaDB [task3]> select date_sub("2023-09-01",interval 260 day);
++-----------------------------------------+
+| date_sub("2023-09-01",interval 260 day) |
++-----------------------------------------+
+| 2022-12-15                              |
++-----------------------------------------+
+1 row in set (0.000 sec)
+
+MariaDB [task3]> select day(curdate());
++----------------+
+| day(curdate()) |
++----------------+
+|             28 |
++----------------+
+1 row in set (0.000 sec)
+
+MariaDB [task3]> select date();
+ERROR 1064 (42000): You have an error in your SQL syntax; check the manual that corresponds to your MariaDB server version for the right syntax to use near ')' at line 1
+MariaDB [task3]> select  curdate();
++------------+
+| curdate()  |
++------------+
+| 2022-03-28 |
++------------+
+1 row in set (0.001 sec)
+
+MariaDB [task3]> select dayname(curdate());
++--------------------+
+| dayname(curdate()) |
++--------------------+
+| Monday             |
++--------------------+
+1 row in set (0.000 sec)
+
+MariaDB [task3]> select dayofmonth(curdate());
++-----------------------+
+| dayofmonth(curdate()) |
++-----------------------+
+|                    28 |
++-----------------------+
+1 row in set (0.000 sec)
+
+MariaDB [task3]> select dayofweek(curdate());
++----------------------+
+| dayofweek(curdate()) |
++----------------------+
+|                    2 |
++----------------------+
+1 row in set (0.000 sec)
+
+MariaDB [task3]> select dayofyear(curdate());
++----------------------+
+| dayofyear(curdate()) |
++----------------------+
+|                   87 |
++----------------------+
+1 row in set (0.000 sec)
+
+MariaDB [task3]> select extract(curdate());
+ERROR 1064 (42000): You have an error in your SQL syntax; check the manual that corresponds to your MariaDB server version for the right syntax to use near 'curdate())' at line 1
+MariaDB [task3]> select extract("2013-12-15 09:03:21");
+ERROR 1064 (42000): You have an error in your SQL syntax; check the manual that corresponds to your MariaDB server version for the right syntax to use near '"2013-12-15 09:03:21")' at line 1
+MariaDB [task3]> select extract( yea_rmonth from "2013-12-15 09:03:21");
+ERROR 1064 (42000): You have an error in your SQL syntax; check the manual that corresponds to your MariaDB server version for the right syntax to use near 'yea_rmonth from "2013-12-15 09:03:21")' at line 1
+MariaDB [task3]> select extract( year_month from "2013-12-15 09:03:21");
++-------------------------------------------------+
+| extract( year_month from "2013-12-15 09:03:21") |
++-------------------------------------------------+
+|                                          201312 |
++-------------------------------------------------+
+1 row in set (0.001 sec)
+
+MariaDB [task3]> select extract( week from "2013-12-15 09:03:21");
++-------------------------------------------+
+| extract( week from "2013-12-15 09:03:21") |
++-------------------------------------------+
+|                                        50 |
++-------------------------------------------+
+1 row in set (0.000 sec)
+
+MariaDB [task3]> select extract( hour from "2013-12-15 09:03:21");
++-------------------------------------------+
+| extract( hour from "2013-12-15 09:03:21") |
++-------------------------------------------+
+|                                         9 |
++-------------------------------------------+
+1 row in set (0.000 sec)
+
+MariaDB [task3]> select extract( minutes from "2013-12-15 09:03:21");
+ERROR 1064 (42000): You have an error in your SQL syntax; check the manual that corresponds to your MariaDB server version for the right syntax to use near 'minutes from "2013-12-15 09:03:21")' at line 1
+MariaDB [task3]> select extract( minute from "2013-12-15 09:03:21");
++---------------------------------------------+
+| extract( minute from "2013-12-15 09:03:21") |
++---------------------------------------------+
+|                                           3 |
++---------------------------------------------+
+1 row in set (0.000 sec)
+
+MariaDB [task3]> select from_days(1234556);
++--------------------+
+| from_days(1234556) |
++--------------------+
+| 3380-02-06         |
++--------------------+
+1 row in set (0.000 sec)
+
+MariaDB [task3]> select from_days(16);
++---------------+
+| from_days(16) |
++---------------+
+| 0000-00-00    |
++---------------+
+1 row in set (0.000 sec)
+
+MariaDB [task3]> select hour("77740:59:59");
++---------------------+
+| hour("77740:59:59") |
++---------------------+
+|                 838 |
++---------------------+
+1 row in set, 1 warning (0.001 sec)
+
+MariaDB [task3]> select last_day("1201-12-12");
++------------------------+
+| last_day("1201-12-12") |
++------------------------+
+| 1201-12-31             |
++------------------------+
+1 row in set (0.000 sec)
+
+MariaDB [task3]> select last_day("2000-12-12");
++------------------------+
+| last_day("2000-12-12") |
++------------------------+
+| 2000-12-31             |
++------------------------+
+1 row in set (0.001 sec)
+
+MariaDB [task3]> select locatetime();
+ERROR 1558 (HY000): Column count of mysql.proc is wrong. Expected 21, found 20. Created with MariaDB 100108, now running 100422. Please use mysql_upgrade to fix this error
+MariaDB [task3]> select localtime();
++---------------------+
+| localtime()         |
++---------------------+
+| 2022-03-28 18:00:45 |
++---------------------+
+1 row in set (0.000 sec)
+
+MariaDB [task3]> select localtimestamp();
++---------------------+
+| localtimestamp()    |
++---------------------+
+| 2022-03-28 18:01:11 |
++---------------------+
+1 row in set (0.001 sec)
+
+MariaDB [task3]> select makedate(2018,4);
++------------------+
+| makedate(2018,4) |
++------------------+
+| 2018-01-04       |
++------------------+
+1 row in set (0.001 sec)
+
+MariaDB [task3]> select maketime(2,4,6);
++-----------------+
+| maketime(2,4,6) |
++-----------------+
+| 02:04:06        |
++-----------------+
+1 row in set (0.000 sec)
+
+MariaDB [task3]> select microsecond("01:00:00.00);
+    "> select microsecond("01:00:00.00");
+    "> select microsecond("01:00:00.00");
+    "> select microsecond("01:00:00.00");;
+    "> selecmo;
+    "> 
+    "> 
+    "> select reverse(name) from task5;
+

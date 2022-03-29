@@ -1,0 +1,36 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+<body>
+    <script type="text/javascript">
+
+         
+    function print2largest(arr, arr_size) {
+        let i, first, second;
+  
+        
+        if (arr_size < 2) {
+            document.write(" Invalid Input ");
+            return;
+        }
+        arr.sort();
+        for (i = arr_size - 2; i >= 0; i--) {
+            if (arr[i] != arr[arr_size - 1]) {
+                document.write("The second largest element is " + arr[i]);
+                return;
+            }
+        }
+  
+        document.write("There is no second largest element<br>")}
+ 
+    let arr= [ 12, 35, 1, 10, 34, 1 ];
+    let n = arr.length;
+    print2largest(arr, n);
+    </script>
+</body>
+</html>

@@ -1,0 +1,19 @@
+<!DOCTYPE HTML>
+<html>
+<head>
+<script type="text/javascript">
+function answer()
+{
+a = document.forms["myform"]["newinput"].value;
+document.forms["myform"]["result"].value=a;
+}
+</script>
+</head>
+<body>
+<form action="/cgi-bin/html5.cgi" method="get" name="myform">
+Enter any value : <input type="text" name="newinput" />
+<input type="button" value="Result" onclick="answer();" />
+<output name="result"> </output>
+</form>
+</body>
+</html>

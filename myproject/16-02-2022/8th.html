@@ -1,0 +1,41 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>division of student</title>
+</head>
+<body>
+    <script type="text/javascript">
+        var math=window.prompt('enter a math no.');
+        var science=window.prompt('enter a science no.');
+        var eng =window.prompt('enter a eng no.');
+
+        var total= math + science + eng;
+        {
+            document.write('total marks',total);
+        }
+        var percentage=(total/300);
+        if(percentage>=60)
+        {
+            document.write('frist division');
+        }
+        else if(percentage>=50)
+        {
+            document.write("2nd division");
+        }
+        else if(percentage>=35)
+        {
+              document.write('3rd division');
+        }
+        else
+        {
+            document.write('fail');
+        }
+
+        
+
+    </script>
+</body>
+</html>

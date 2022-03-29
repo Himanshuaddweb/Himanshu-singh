@@ -1,0 +1,333 @@
+﻿XAMPP: Starting Apache...already running.
+XAMPP: Starting MySQL...already running.
+XAMPP: Starting ProFTPD...already running.
+himanshu@himanshu:~$ sudo /opt/lampp/bin/mysql -u root -p
+Enter password: 
+Welcome to the MariaDB monitor.  Commands end with ; or \g.
+Your MariaDB connection id is 10
+Server version: 10.4.22-MariaDB Source distribution
+
+Copyright (c) 2000, 2018, Oracle, MariaDB Corporation Ab and others.
+
+Type 'help;' or '\h' for help. Type '\c' to clear the current input statement.
+
+MariaDB [(none)]> create databases;
+ERROR 1064 (42000): You have an error in your SQL syntax; check the manual that corresponds to your MariaDB server version for the right syntax to use near 'databases' at line 1
+MariaDB [(none)]> show databases;
++--------------------+
+| Database           |
++--------------------+
+| himanshu           |
+| information_schema |
+| mysql              |
+| performance_schema |
+| phpmyadmin         |
+| task2              |
+| task3              |
+| task4              |
+| test               |
++--------------------+
+9 rows in set (0.001 sec)
+
+MariaDB [(none)]> use himanshu;
+Reading table information for completion of table and column names
+You can turn off this feature to get a quicker startup with -A
+
+Database changed
+MariaDB [himanshu]> show tables;
++--------------------+
+| Tables_in_himanshu |
++--------------------+
+| compnay            |
+| general store      |
+| goverment          |
+| hopital            |
+| office             |
+| school             |
+| student            |
+| student2           |
+| student3           |
+| students4          |
++--------------------+
+10 rows in set (0.001 sec)
+
+MariaDB [himanshu]> select * from student;
++----+------------+---------+-------+-------+-----------+
+| id | Name       | roll no | class | marks | pecentage |
++----+------------+---------+-------+-------+-----------+
+|  1 | himanshu   |       1 |    12 |   500 |        90 |
+|  2 | hiten      |       2 |    12 |   400 |        60 |
+|  3 | prateek    |       3 |    12 |   300 |        50 |
+|  4 | deepankar  |       4 |    12 |   599 |        99 |
+|  5 | prachi     |       5 |    12 |   700 |       100 |
+|  6 | raonal     |       7 |    12 |   655 |        89 |
+|  8 | singh      |       8 |    12 |   766 |        79 |
+|  9 | yadav      |       9 |    12 |   455 |        45 |
+|  8 | khendelwal |       8 |    12 |   566 |        89 |
+| 10 | ronak      |      10 |    12 |   899 |       100 |
++----+------------+---------+-------+-------+-----------+
+10 rows in set (0.001 sec)
+
+MariaDB [himanshu]> select * from student2;
++----+-----------+-------+---------+-------+
+| id | name      | calss | rollno. | marks |
++----+-----------+-------+---------+-------+
+|  1 | ram       |     6 |       1 |   400 |
+|  2 | shyam     |     6 |       2 |   402 |
+|  3 | ghanshyam |     6 |       3 |   399 |
+|  4 | shyam     |     6 |       4 |   299 |
+|  5 | dham      |     6 |       5 |   344 |
+|  6 | kam       |     6 |       6 |   322 |
+|  7 | jam       |     6 |       7 |   433 |
+|  8 | daam      |     6 |       8 |   412 |
+|  9 | ahham     |     6 |       9 |   413 |
+| 10 | hamanai   |     6 |       9 |   233 |
++----+-----------+-------+---------+-------+
+10 rows in set (0.001 sec)
+
+MariaDB [himanshu]> use task3;
+Reading table information for completion of table and column names
+You can turn off this feature to get a quicker startup with -A
+
+Database changed
+MariaDB [task3]> show databases;
++--------------------+
+| Database           |
++--------------------+
+| himanshu           |
+| information_schema |
+| mysql              |
+| performance_schema |
+| phpmyadmin         |
+| task2              |
+| task3              |
+| task4              |
+| test               |
++--------------------+
+9 rows in set (0.001 sec)
+
+MariaDB [task3]> use task3;
+Database changed
+MariaDB [task3]> select * from employee;
++------+---------+----------+--------------+--------+------------------+------------+-----------+
+| id   | dept_no | e_name   | joining_date | salary | e_job            | commission | dept      |
++------+---------+----------+--------------+--------+------------------+------------+-----------+
+|    1 |       1 | raghu    | 2010-01-01   |  30000 | full-stack       |         20 | it_secter |
+|    2 |       2 | ramu     | 2011-01-01   |  40000 | shell            |         10 | marketing |
+|    3 |       3 | sachin   | 2012-01-01   |  20000 | cloud            |         20 | it_secter |
+|    4 |       4 | sahni    | 2013-01-01   |   3000 | marketing        |         12 | finace    |
+|    5 |       5 | himanshu | 2014-01-01   |   2000 | cyber-security   |          5 | it_secter |
+|    6 |       6 | shyamu   | 2015-01-01   |  50000 | systeam-engineer |         24 | it_secter |
+|    7 |       7 | raja     | 2016-01-01   | 600000 | accoubtants      |         40 | bussiness |
++------+---------+----------+--------------+--------+------------------+------------+-----------+
+7 rows in set (0.001 sec)
+
+MariaDB [task3]> show databases;
++--------------------+
+| Database           |
++--------------------+
+| himanshu           |
+| information_schema |
+| mysql              |
+| performance_schema |
+| phpmyadmin         |
+| task2              |
+| task3              |
+| task4              |
+| test               |
++--------------------+
+9 rows in set (0.001 sec)
+
+MariaDB [task3]> use himanshu;
+Reading table information for completion of table and column names
+You can turn off this feature to get a quicker startup with -A
+
+Database changed
+MariaDB [himanshu]> select * from student;
++----+------------+---------+-------+-------+-----------+
+| id | Name       | roll no | class | marks | pecentage |
++----+------------+---------+-------+-------+-----------+
+|  1 | himanshu   |       1 |    12 |   500 |        90 |
+|  2 | hiten      |       2 |    12 |   400 |        60 |
+|  3 | prateek    |       3 |    12 |   300 |        50 |
+|  4 | deepankar  |       4 |    12 |   599 |        99 |
+|  5 | prachi     |       5 |    12 |   700 |       100 |
+|  6 | raonal     |       7 |    12 |   655 |        89 |
+|  8 | singh      |       8 |    12 |   766 |        79 |
+|  9 | yadav      |       9 |    12 |   455 |        45 |
+|  8 | khendelwal |       8 |    12 |   566 |        89 |
+| 10 | ronak      |      10 |    12 |   899 |       100 |
++----+------------+---------+-------+-------+-----------+
+10 rows in set (0.001 sec)
+
+MariaDB [himanshu]> select * from  student2;
++----+-----------+-------+---------+-------+
+| id | name      | calss | rollno. | marks |
++----+-----------+-------+---------+-------+
+|  1 | ram       |     6 |       1 |   400 |
+|  2 | shyam     |     6 |       2 |   402 |
+|  3 | ghanshyam |     6 |       3 |   399 |
+|  4 | shyam     |     6 |       4 |   299 |
+|  5 | dham      |     6 |       5 |   344 |
+|  6 | kam       |     6 |       6 |   322 |
+|  7 | jam       |     6 |       7 |   433 |
+|  8 | daam      |     6 |       8 |   412 |
+|  9 | ahham     |     6 |       9 |   413 |
+| 10 | hamanai   |     6 |       9 |   233 |
++----+-----------+-------+---------+-------+
+10 rows in set (0.001 sec)
+
+MariaDB [himanshu]> select student.id,student2.id from student join student2 on student.id=student2.id;
++----+----+
+| id | id |
++----+----+
+|  1 |  1 |
+|  2 |  2 |
+|  3 |  3 |
+|  4 |  4 |
+|  5 |  5 |
+|  6 |  6 |
+|  8 |  8 |
+|  8 |  8 |
+|  9 |  9 |
+| 10 | 10 |
++----+----+
+10 rows in set (0.001 sec)
+
+MariaDB [himanshu]> select student.id,student.name, student2.id,student.name from student join student2 on student.id=student2.id;
++----+------------+----+------------+
+| id | name       | id | name       |
++----+------------+----+------------+
+|  1 | himanshu   |  1 | himanshu   |
+|  2 | hiten      |  2 | hiten      |
+|  3 | prateek    |  3 | prateek    |
+|  4 | deepankar  |  4 | deepankar  |
+|  5 | prachi     |  5 | prachi     |
+|  6 | raonal     |  6 | raonal     |
+|  8 | singh      |  8 | singh      |
+|  8 | khendelwal |  8 | khendelwal |
+|  9 | yadav      |  9 | yadav      |
+| 10 | ronak      | 10 | ronak      |
++----+------------+----+------------+
+10 rows in set (0.001 sec)
+
+MariaDB [himanshu]> select student.id,student.name, student2.id,student2.name from student join student2 on student.id=student2.id;
++----+------------+----+-----------+
+| id | name       | id | name      |
++----+------------+----+-----------+
+|  1 | himanshu   |  1 | ram       |
+|  2 | hiten      |  2 | shyam     |
+|  3 | prateek    |  3 | ghanshyam |
+|  4 | deepankar  |  4 | shyam     |
+|  5 | prachi     |  5 | dham      |
+|  6 | raonal     |  6 | kam       |
+|  8 | singh      |  8 | daam      |
+|  8 | khendelwal |  8 | daam      |
+|  9 | yadav      |  9 | ahham     |
+| 10 | ronak      | 10 | hamanai   |
++----+------------+----+-----------+
+10 rows in set (0.001 sec)
+
+MariaDB [himanshu]> select student.id,student.name, student2.id,student2.name from student inner join student2 on student.id=student2.id;
++----+------------+----+-----------+
+| id | name       | id | name      |
++----+------------+----+-----------+
+|  1 | himanshu   |  1 | ram       |
+|  2 | hiten      |  2 | shyam     |
+|  3 | prateek    |  3 | ghanshyam |
+|  4 | deepankar  |  4 | shyam     |
+|  5 | prachi     |  5 | dham      |
+|  6 | raonal     |  6 | kam       |
+|  8 | singh      |  8 | daam      |
+|  8 | khendelwal |  8 | daam      |
+|  9 | yadav      |  9 | ahham     |
+| 10 | ronak      | 10 | hamanai   |
++----+------------+----+-----------+
+10 rows in set (0.001 sec)
+
+MariaDB [himanshu]> select student.id,student.name, student2.id,student2.name from student left join student2 on student.id=student2.id;
++----+------------+------+-----------+
+| id | name       | id   | name      |
++----+------------+------+-----------+
+|  1 | himanshu   |    1 | ram       |
+|  2 | hiten      |    2 | shyam     |
+|  3 | prateek    |    3 | ghanshyam |
+|  4 | deepankar  |    4 | shyam     |
+|  5 | prachi     |    5 | dham      |
+|  6 | raonal     |    6 | kam       |
+|  8 | singh      |    8 | daam      |
+|  8 | khendelwal |    8 | daam      |
+|  9 | yadav      |    9 | ahham     |
+| 10 | ronak      |   10 | hamanai   |
++----+------------+------+-----------+
+10 rows in set (0.001 sec)
+
+MariaDB [himanshu]> select student.id,student.name, student2.id,student2.name from student outer join student2 on student.id=student2.id;
+ERROR 1064 (42000): You have an error in your SQL syntax; check the manual that corresponds to your MariaDB server version for the right syntax to use near 'outer join student2 on student.id=student2.id' at line 1
+MariaDB [himanshu]> select student.id,student.name, student2.id,student2.name from student right join student2 on student.id=student2.id;
++------+------------+----+-----------+
+| id   | name       | id | name      |
++------+------------+----+-----------+
+|    1 | himanshu   |  1 | ram       |
+|    2 | hiten      |  2 | shyam     |
+|    3 | prateek    |  3 | ghanshyam |
+|    4 | deepankar  |  4 | shyam     |
+|    5 | prachi     |  5 | dham      |
+|    6 | raonal     |  6 | kam       |
+|    8 | singh      |  8 | daam      |
+|    9 | yadav      |  9 | ahham     |
+|    8 | khendelwal |  8 | daam      |
+|   10 | ronak      | 10 | hamanai   |
+| NULL | NULL       |  7 | jam       |
++------+------------+----+-----------+
+11 rows in set (0.001 sec)
+
+MariaDB [himanshu]> select student.id,student.name, student2.id,student2.name from student left join student2 on student.id=student2.id;
++----+------------+------+-----------+
+| id | name       | id   | name      |
++----+------------+------+-----------+
+|  1 | himanshu   |    1 | ram       |
+|  2 | hiten      |    2 | shyam     |
+|  3 | prateek    |    3 | ghanshyam |
+|  4 | deepankar  |    4 | shyam     |
+|  5 | prachi     |    5 | dham      |
+|  6 | raonal     |    6 | kam       |
+|  8 | singh      |    8 | daam      |
+|  8 | khendelwal |    8 | daam      |
+|  9 | yadav      |    9 | ahham     |
+| 10 | ronak      |   10 | hamanai   |
++----+------------+------+-----------+
+10 rows in set (0.001 sec)
+
+MariaDB [himanshu]> select student.id,student.name, student2.id,student2.name from student full join student2 on student.id=student2.id;
+ERROR 1054 (42S22): Unknown column 'student.id' in 'field list'
+MariaDB [himanshu]> select student.id,student.name, student2.id,student2.name from student self join student2 on student.id=student2.id;
+MariaDB [himanshu]> select student.id,student.name, student2.id,student2MariaMariaDB [himanshu]> select student.id,student.name, student2.id,student2.name from table student, table student2 where student.id <> student2.id;
+ERROR 1064 (42000): You have an error in your SQL syntax; check the manual that corresponds to your MariaDB server version for the right syntax to use near 'table student, table student2 where student.id <> student2.id' at line 1
+MariaDB [himanshu]> select student.id as id,student.name as name, student2.id id2 ,student2.name from table student, table student2 where student.id <> student2.id and student.class=student2.class;
+ERROR 1064 (42000): You have an error in your SQL syntax; check the manual that corresponds to your MariaDB server version for the right syntax to use near 'table student, table student2 where student.id <> student2.id and student.cla...' at line 1
+MariaDB [himanshu]> select student.id as id,student.name as name, student2.id as id2 ,student2.name as name2 from table student, table student2 where student.id <> student2.id and student.class=student2.class;
+ERROR 1064 (42000): You have an error in your SQL syntax; check the manual that corresponds to your MariaDB server version for the right syntax to use near 'table student, table student2 where student.id <> student2.id and student.cla...' at line 1
+MariaDB [himanshu]> select student.id as id1,student.name as name, student2.id as id2 ,student2.name as name2 from table student, table student2 where student.id <> student2.id and student.class=student2.class;
+ERROR 1064 (42000): You have an error in your SQL syntax; check the manual that corresponds to your MariaDB server version for the right syntax to use near 'table student, table student2 where student.idMariaDB [himanshu]> select student.id as id1,student.name as name, student2.id as id2 ,student2.name as name2 from table student, table student2 where student.id <> student2.id and student.class=student2.class;
+ERROR 1064 (42000): You have an error in your SQL syntax; check the manual that corresponds to your MariaDB server version for the right syntax to use near 'table student, table student2 where student.id <> student2.id and student.cla...' at line 1
+MariaDB [himanshu]> select student.id as id1,student.name as name, student2.id as id2 ,student2.name as name2 from table student, table student2 where student.id <> student2.id and student.class=student2.class;
+ERROR 1064 (42000): You have an error in your SQL syntax; check the manual that corresponds to your MariaDB server version for the right syntax to use near 'table student, table student2 where student.id <> student2.id and student.cla...' at line 1
+MariaDB [himanshu]> 
+MariaDB [himanshu]> select student.id,student.name, student2.id,student2.name from student cross join student2 on student.id=student2.id;
++----+------------+----+-----------+
+| id | name       | id | name      |
++----+------------+----+-----------+
+|  1 | himanshu   |  1 | ram       |
+|  2 | hiten      |  2 | shyam     |
+|  3 | prateek    |  3 | ghanshyam |
+|  4 | deepankar  |  4 | shyam     |
+|  5 | prachi     |  5 | dham      |
+|  6 | raonal     |  6 | kam       |
+|  8 | singh      |  8 | daam      |
+|  8 | khendelwal |  8 | daam      |
+|  9 | yadav      |  9 | ahham     |
+| 10 | ronak      | 10 | hamanai   |
++----+------------+----+-----------+
+10 rows in set (0.002 sec)
+

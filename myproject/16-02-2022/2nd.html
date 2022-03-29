@@ -1,0 +1,60 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>second convert into hour</title>
+</head>
+<body>
+    <script type="text/javascript">
+        var sec=window.prompt("enter a second");
+        var min;
+        var hour;
+
+if(sec<3600){
+    var a = Math.floor(sec/60); //minutes
+    var b = sec%60; //seconds
+
+    if (b!=1){
+        sec = "seconds";
+    }else{
+        sec = "second";
+    }
+
+    if(a!=1){
+        min = "minutes";
+    }else{
+        min = "minute";
+    }
+
+    document.write("the time is"+a+" "+min+" and"+b+""+sec+"");
+}else{
+        var a = Math.floor(sec/3600); //hours
+    var x = sec%3600;
+    var b = Math.floor(x/60); //minutes
+    var c = sec%60; //seconds
+
+     if (c!=1){
+        sec = "seconds";
+    }else{
+        sec = "second";
+    }
+
+    if(b!=1){
+        min = "minutes";
+    }else{
+        min = "minute";
+    }
+
+    if(c!=1){
+        hour = "hours";
+    }else{
+        hour = "hour";
+    }
+
+    document.write("the time is "+a+" "+hour+", "+b+" "+min+" and "+c+" "+sec+".");
+}
+    </script>
+</body>
+</html>

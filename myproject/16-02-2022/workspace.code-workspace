@@ -1,0 +1,19 @@
+{
+	"folders": [
+		{
+			"path": ".."
+		},
+		{
+			"path": "../frist_project/css"
+		},
+		{
+			"path": "../project2/css"
+		},
+		{
+			"path": "../7marchwhile"
+		}
+	],
+	"settings": {
+		"liveServer.settings.multiRootWorkspaceName": "myproject"
+	}
+}

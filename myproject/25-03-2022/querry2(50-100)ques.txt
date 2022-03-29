@@ -1,0 +1,306 @@
+﻿MariaDB [TASK3]> SELECT ENAME ,ESELERY, ESELERY/100*15 AS HRA, ESELERY/100*5 AS PF, ESELERY/100*10 AS DA,ESELERY+ESELERY/100*15+ESELERY/100*10-ESELERY/100*5 AS TOTAL FROM MANGER;
++-----------+---------+------------+-----------+-----------+------------+
+| ENAME     | ESELERY | HRA        | PF        | DA        | TOTAL      |
++-----------+---------+------------+-----------+-----------+------------+
+| SOMAY     |   50000 |  7500.0000 | 2500.0000 | 5000.0000 | 60000.0000 |
+| RONAK     |   60000 |  9000.0000 | 3000.0000 | 6000.0000 | 72000.0000 |
+| SANDY     |   60000 |  9000.0000 | 3000.0000 | 6000.0000 | 72000.0000 |
+| DEEPANSHU |   60000 |  9000.0000 | 3000.0000 | 6000.0000 | 72000.0000 |
+| ANKIT     |   30000 |  4500.0000 | 1500.0000 | 3000.0000 | 36000.0000 |
+| PARTH     |   80000 | 12000.0000 | 4000.0000 | 8000.0000 | 96000.0000 |
+| PRATEK    |   70000 | 10500.0000 | 3500.0000 | 7000.0000 | 84000.0000 |
++-----------+---------+------------+-----------+-----------+------------+
+7 rows in set (0.001 sec)
+
+MariaDB [TASK3]> SELECT DEPTNAME,COUNT(DEPTNAME) FROM MANGER GROUP BY DEPTNAME;
++----------+-----------------+
+| DEPTNAME | COUNT(DEPTNAME) |
++----------+-----------------+
+| 10       |               2 |
+| 20       |               1 |
+| 30       |               2 |
+| 60       |               1 |
+| 70       |               1 |
++----------+-----------------+
+5 rows in set (0.001 sec)
+
+MariaDB [TASK3]> SELECT JOB,COUNT(JOB) FROM MANGER GROUP BY JOB;
++-----------+------------+
+| JOB       | COUNT(JOB) |
++-----------+------------+
+| CLERK     |          1 |
+| DEVLOPER  |          1 |
+| FULLSTACK |          1 |
+| maneger   |          1 |
+| SALES     |          3 |
++-----------+------------+
+5 rows in set (0.001 sec)
+
+MariaDB [TASK3]> SELECT DEPTNAME SUM(ESELERY) FROM MANGER GROUP BY DEPTNAME;
+ERROR 1064 (42000): You have an error in your SQL syntax; check the manual that corresponds to your MariaDB server version for the right syntax to use near 'SUM(ESELERY) FROM MANGER GROUP BY DEPTNAME' at line 1
+MariaDB [TASK3]> SELECT DEPTNAME, SUM(ESELERY) FROM MANGER GROUP BY DEPTNAME;
++----------+--------------+
+| DEPTNAME | SUM(ESELERY) |
++----------+--------------+
+| 10       |       110000 |
+| 20       |        60000 |
+| 30       |        90000 |
+| 60       |        70000 |
+| 70       |        80000 |
++----------+--------------+
+5 rows in set (0.001 sec)
+
+MariaDB [TASK3]> SELECT DEPTNAME,MAX(ESELERY)FROM MANGER GROUP BY DEPTNAME;
++----------+--------------+
+| DEPTNAME | MAX(ESELERY) |
++----------+--------------+
+| 10       |        60000 |
+| 20       |        60000 |
+| 30       |        60000 |
+| 60       |        70000 |
+| 70       |        80000 |
++----------+--------------+
+5 rows in set (0.001 sec)
+
+MariaDB [TASK3]> SELECT JOB,MIN(ESELERY) FROM MANGER GROUP BY JOB;
++-----------+--------------+
+| JOB       | MIN(ESELERY) |
++-----------+--------------+
+| CLERK     |        60000 |
+| DEVLOPER  |        70000 |
+| FULLSTACK |        50000 |
+| maneger   |        80000 |
+| SALES     |        30000 |
++-----------+--------------+
+5 rows in set (0.001 sec)
+
+MariaDB [TASK3]> SELECT DEPTNAME,COUNT(DEPTNAME) FROM  MANGER GROUP BY DEPTNAME HAVING COUNT(*)>3;
+Empty set (0.001 sec)
+
+MariaDB [TASK3]> SELECT JOB,SUM(ESELERY)FROM MANGER GROUP BY JOB HAVING SUM(ESELERY)>40000;
++-----------+--------------+
+| JOB       | SUM(ESELERY) |
++-----------+--------------+
+| CLERK     |        60000 |
+| DEVLOPER  |        70000 |
+| FULLSTACK |        50000 |
+| maneger   |        80000 |
+| SALES     |       150000 |
++-----------+--------------+
+5 rows in set (0.001 sec)
+
+MariaDB [TASK3]> SELECT JOB,COUNT(ID) FROM MANGER GROUP BY JOB HAVING COUNT(JOB)>3;
+Empty set (0.001 sec)
+
+MariaDB [TASK3]> SELECT ENAME FROM MANGER WHERE ESELERY=(SELECT MAX(ESELERY)FROM MANGER);
++-------+
+| ENAME |
++-------+
+| PARTH |
++-------+
+1 row in set (0.001 sec)
+
+MariaDB [TASK3]> SELECT ID,ENAME FROM MANGER WHERE JOB='CLERK' AND ESELERY=(SELECT MAX(ESELERY) FROM MANGER WHERE JOB ='CLERK';
+ERROR 1064 (42000): You have an error in your SQL syntax; check the manual that corresponds to your MariaDB server version for the right syntax to use near '' at line 1
+MariaDB [TASK3]> SELECT ID,ENAME FROM MANGER WHERE JOB='CLERK' AND ESELERY=(SELECT MAX(ESELERY) FROM MANGER WHERE JOB ='CLERK');
++----+-----------+
+| ID | ENAME     |
++----+-----------+
+|  4 | DEEPANSHU |
++----+-----------+
+1 row in set (0.001 sec)
+
+MariaDB [TASK3]>  
+ariaDB [TASK3]> SELECT ENAME,FROM MANGER WHERE JOB='CLERK' AND ESELERY>(SELECT MIN(ESELERY)FROM MANGER WHERE JOB='SALES');
+ERROR 1064 (42000): You have an error in your SQL syntax; check the manual that corresponds to your MariaDB server version for the right syntax to use near 'FROM MANGER WHERE JOB='CLERK' AND ESELERY>(SELECT MIN(ESELERY)FROM MANGER WHE...' at line 1
+MariaDB [TASK3]> SELECT ENAME FROM MANGER WHERE JOB='CLERK' AND ESELERY>(SELECT MIN(ESELERY)FROM MANGER WHERE JOB='SALES');
++-----------+
+| ENAME     |
++-----------+
+| DEEPANSHU |
++-----------+
+1 row in set (0.001 sec)
+
+MariaDB [TASK3]> SELECT ENAME, ESEKERY FROM MANGER WHERE ESELERY>(SELECT ESELERY FROM MANGER WHERE ENAME='SOMAY') AND ESELERY>(SELECT ESELERY FROM MANGER WHERE ENAME='DEEPANSHU');
+ERROR 1054 (42S22): Unknown column 'ESEKERY' in 'field list'
+MariaDB [TASK3]> SELECT ENAME, ESELERY FROM MANGER WHERE ESELERY>(SELECT ESELERY FROM MANGER WHERE ENAME='SOMAY') AND ESELERY>(SELECT ESELERY FROM MANGER WHERE ENAME='DEEPANSHU');
++--------+---------+
+| ENAME  | ESELERY |
++--------+---------+
+| PARTH  |   80000 |
+| PRATEK |   70000 |
++--------+---------+
+2 rows in set (0.001 sec)
+
+MariaDB [TASK3]> SELECT ENAME,ESELERY,DEPTNAME FROM MANGER WHERE ESELERY IN(SELECT MAX(ESELERY)FROM MANGER GROUP BY DEPTNAME);
++-----------+---------+----------+
+| ENAME     | ESELERY | DEPTNAME |
++-----------+---------+----------+
+| RONAK     |   60000 | 10       |
+| SANDY     |   60000 | 20       |
+| DEEPANSHU |   60000 | 30       |
+| PARTH     |   80000 | 70       |
+| PRATEK    |   70000 | 60       |
++-----------+---------+----------+
+5 rows in set (0.001 sec)
+
+MariaDB [TASK3]> SELECT ENAME FROM MANGER WHERE DEPTNAME=(SELECT DEPTNAMEE FROM DEPTNAME WHERE JOB='FULLSTACK');
+ERROR 1146 (42S02): Table 'TASK3.DEPTNAME' doesn't exist
+MariaDB [TASK3]> SELECT ENAME FROM MANGER WHERE DEPTNAME=(SELECT DEPTNAMEE FROM MANGER WHERE JOB='FULLSTACK');
+ERROR 1054 (42S22): Unknown column 'DEPTNAMEE' in 'field list'
+MariaDB [TASK3]> SELECT ENAME FROM MANGER WHERE DEPTNAME=(SELECT DEPTNAMEFROM MANGER WHERE JOB='FULLSTACK');
+ERROR 1054 (42S22): Unknown column 'DEPTNAMEFROM' in 'field list'
+MariaDB [TASK3]> SELECT ENAME FROM MANGER WHERE DEPTNAME=(SELECT DEPTNAME FROM MANGER WHERE JOB='FULLSTACK');
++-------+
+| ENAME |
++-------+
+| SOMAY |
+| RONAK |
++-------+
+2 rows in set (0.000 sec)
+
+MariaDB [TASK3]> SELECT ENAME FROM MANGER WHERE DEPTNAME=(SLECT DEPTNAME FROM MANGER WHERE DEPT='MARKETING');
+ERROR 1064 (42000): You have an error in your SQL syntax; check the manual that corresponds to your MariaDB server version for the right syntax to use near 'DEPTNAME FROM MANGER WHERE DEPT='MARKETING')' at line 1
+MariaDB [TASK3]> SELECT ENAME FROM MANGER WHERE DEPTNAME=(SLECT DEPTNAME FROM MANGER WHERE DEPT='MARKETING');
+ERROR 1064 (42000): You have an error in your SQL syntax; check the manual that corresponds to your MariaDB server version for the right syntax to use near 'DEPTNAME FROM MANGER WHERE DEPT='MARKETING')' at line 1
+MariaDB [TASK3]> SELECT ENAME FROM MANGER WHERE DEPTNAME = (SLECT DEPTNAME FROM MANGER WHERE DEPT='MARKETING');
+ERROR 1064 (42000): You have an error in your SQL syntax; check the manual that corresponds to your MariaDB server version for the right syntax to use near 'DEPTNAME FROM MANGER WHERE DEPT='MARKETING')' at line 1
+MariaDB [TASK3]> SELECT JOB,SUM(ESELERY) FROM MANGER GROUP BY JOB HAVING SUM(ESELERY)>(SELECT MAX(ESELERY)FROM MANGER WHERE JOB='MANGER');
+Empty set (0.001 sec)
+
+MariaDB [TASK3]> SELECT ENAME FROM MANGER WHERE DEPTNAME=10 AND ESELERY>ANY(SELECT ESELERY FROM MANGER WHERE DEPTNAME NOT IN 10);
+ERROR 1064 (42000): You have an error in your SQL syntax; check the manual that corresponds to your MariaDB server version for the right syntax to use near '10)' at line 1
+MariaDB [TASK3]> SELECT ENAME FROM MANGER WHERE DEPTNAME=10 AND ESELERY>ANY(SELECT ESELERY FROM MANGER WHERE DEPTNAME NOT IN '10');
+ERROR 1064 (42000): You have an error in your SQL syntax; check the manual that corresponds to your MariaDB server version for the right syntax to use near ''10')' at line 1
+MariaDB [TASK3]> SELECT ENAME FROM MANGER WHERE DEPTNAME=10 AND ESELERY>ANY(SELECT ESELERY FROM MANGER WHERE DEPTNAME NOT IN 10);
+ERROR 1064 (42000): You have an error in your SQL syntax; check the manual that corresponds to your MariaDB server version for the right syntax to use near '10)' at line 1
+MariaDB [TASK3]> SELECT ENAME,FROM MANGER WHERE DEPTNAME=10AND ESELERY>ALL(SELECT ESELERY FROM MANGER WHERE DEPTNAME NOT IN 10);
+ERROR 1064 (42000): You have an error in your SQL syntax; check the manual that corresponds to your MariaDB server version for the right syntax to use near 'FROM MANGER WHERE DEPTNAME=10AND ESELERY>ALL(SELECT ESELERY FROM MANGER WHERE...' at line 1
+MariaDB [TASK3]> SELECT ENAME,FROM MANGER WHERE DEPTNAME=10 AND ESELERY>ALL(SELECT ESELERY FROM MANGER WHERE DEPTNAME NOT IN 10);
+ERROR 1064 (42000): You have an error in your SQL syntax; check the manual that corresponds to your MariaDB server version for the right syntax to use near 'FROM MANGER WHERE DEPTNAME=10 AND ESELERY>ALL(SELECT ESELERY FROM MANGER WHER...' at line 1
+MariaDB [TASK3]> SELECT ENAME,FROM MANGER WHERE DEPTNAME=10 AND ESELERY>ALL(SELECT ESELERY FROM MANGER WHERE DEPTNAME NOT IN 10);
+ERROR 1064 (42000): You have an error in your SQL syntax; check the manual that corresponds to your MariaDB server version for the right syntax to use near 'FROM MANGER WHERE DEPTNAME=10 AND ESELERY>ALL(SELECT ESELERY FROM MANGER WHER...' at line 1
+MariaDB [TASK3]> SELECT UPPER(ENAME)FROM MANGER;
++--------------+
+| UPPER(ENAME) |
++--------------+
+| SOMAY        |
+| RONAK        |
+| SANDY        |
+| DEEPANSHU    |
+| ANKIT        |
+| PARTH        |
+| PRATEK       |
++--------------+
+7 rows in set (0.000 sec)
+
+MariaDB [TASK3]> SELECT LOWER(ENAME) FROM MANGER;
++--------------+
+| LOWER(ENAME) |
++--------------+
+| somay        |
+| ronak        |
+| sandy        |
+| deepanshu    |
+| ankit        |
+| parth        |
+| pratek       |
++--------------+
+7 rows in set (0.001 sec)
+
+MariaDB [TASK3]> SELECT INITCAP(ENAME)FROM MANGER;
+ERROR 1558 (HY000): Column count of mysql.proc is wrong. Expected 21, found 20. Created with MariaDB 100108, now running 100422. Please use mysql_upgrade to fix this error
+MariaDB [TASK3]> SELECT LENGTH(ENAME)FROM MANGER;
++---------------+
+| LENGTH(ENAME) |
++---------------+
+|             5 |
+|             5 |
+|             5 |
+|             9 |
+|             5 |
+|             5 |
+|             6 |
++---------------+
+7 rows in set (0.001 sec)
+
+MariaDB [TASK3]> SELECT LENGTH('ENAME')FROM MANGER;
++-----------------+
+| LENGTH('ENAME') |
++-----------------+
+|               5 |
+|               5 |
+|               5 |
+|               5 |
+|               5 |
+|               5 |
+|               5 |
++-----------------+
+7 rows in set (0.001 sec)
+
+MariaDB [TASK3]> SELECT ENAME||DEPTNAME FROM MANGER;
++-----------------+
+| ENAME||DEPTNAME |
++-----------------+
+|               1 |
+|               1 |
+|               1 |
+|               1 |
+|               1 |
+|               1 |
+|               1 |
++-----------------+
+7 rows in set, 7 warnings (0.001 sec)
+
+MariaDB [TASK3]> SELECT SUBSTR('SALES',10,40)FROM MANGER;
++-----------------------+
+| SUBSTR('SALES',10,40) |
++-----------------------+
+|                       |
+|                       |
+|                       |
+|                       |
+|                       |
+|                       |
+|                       |
++-----------------------+
+7 rows in set (0.001 sec)
+
+MariaDB [TASK3]> SELECT REPLACE(JOB,'manger','BOSS')FROM MANGER;
++------------------------------+
+| REPLACE(JOB,'manger','BOSS') |
++------------------------------+
+| FULLSTACK                    |
+| SALES                        |
+| SALES                        |
+| CLERK                        |
+| SALES                        |
+| maneger                      |
+| DEVLOPER                     |
++------------------------------+
+7 rows in set (0.001 sec)
+
+MariaDB [TASK3]> SELECT ENAME,ID,DECODE(DEPTNAME,10,'SALES',20,'marketing',30,'DEVLOPER',40,'FULLSTACK')
+    -> ;
+ERROR 1064 (42000): You have an error in your SQL syntax; check the manual that corresponds to your MariaDB server version for the right syntax to use near ''SALES',20,'marketing',30,'DEVLOPER',40,'FULLSTACK')' at line 1
+MariaDB [TASK3]> SELECT ENAME,ID,DECODE(DEPTNAME,'10','SALES','20','marketing','30','DEVLOPER','40','FULLSTACK')
+    -> ;
+ERROR 1064 (42000): You have an error in your SQL syntax; check the manual that corresponds to your MariaDB server version for the right syntax to use near ''SALES','20','marketing','30','DEVLOPER','40','FULLSTACK')' at line 1
+MariaDB [TASK3]> SELECT TO DATE(JDATE)-TO DATE('2000-06-08') FROM MANGER;
+ERROR 1064 (42000): You have an error in your SQL syntax; check the manual that corresponds to your MariaDB server version for the right syntax to use near 'TO DATE(JDATE)-TO DATE('2000-06-08') FROM MANGER' at line 1
+MariaDB [TASK3]> SELECT TO DATE('JDATE')-TO DATE('2000-06-08') FROM MANGER;
+ERROR 1064 (42000): You have an error in your SQL syntax; check the manual that corresponds to your MariaDB server version for the right syntax to use near 'TO DATE('JDATE')-TO DATE('2000-06-08') FROM MANGER' at line 1
+MariaDB [TASK3]> SELECT MONTHS BETWEEN(JDATE,'2000-06-08')FROM MANGER;
+ERROR 1064 (42000): You have an error in your SQL syntax; check the manual that corresponds to your MariaDB server version for the right syntax to use near 'FROM MANGER' at line 1
+MariaDB [TASK3]> SELECT MONTHS BETWEEN(JDATE,'2000-06-08') FROM MANGER;
+ERROR 1064 (42000): You have an error in your SQL syntax; check the manual that corresponds to your MariaDB server version for the right syntax to use near 'FROM MANGER' at line 1
+MariaDB [TASK3]> SELECT MONTHS BETWEEN(JDATE,"2000-06-08") FROM MANGER;
+ERROR 1064 (42000): You have an error in your SQL syntax; check the manual that corresponds to your MariaDB server version for the right syntax to use near 'FROM MANGER' at line 1
+MariaDB [TASK3]> SELECT TO_CHAR(JDATE,'HH:MM:ss')FROM MANGER;
+ERROR 1558 (HY000): Column count of mysql.proc is wrong. Expected 21, found 20. Created with MariaDB 100108, now running 100422. Please use mysql_upgrade to fix this error
+MariaDB [TASK3]> SELECT ADD MONTHS(JDATE,3)FROM MANGER;
+ERROR 1064 (42000): You have an error in your SQL syntax; check the manual that corresponds to your MariaDB server version for the right syntax to use near 'ADD MONTHS(JDATE,3)FROM MANGER' at line 1
+MariaDB [TASK3]> SELECT ADD MONTHS(JDATE,'3')FROM MANGER;
+ERROR 1064 (42000): You have an error in your SQL syntax; check the manual that corresponds to your MariaDB server version for the right syntax to use near 'ADD MONTHS(JDATE,'3')FROM MANGER' at line 1
+MariaDB [TASK3]> 
+

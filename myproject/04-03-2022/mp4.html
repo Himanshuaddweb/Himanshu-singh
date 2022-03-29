@@ -1,0 +1,69 @@
+<html>
+<head>
+	<meta charset="utf-8">
+</head>
+<body style="background-color:rgb(16, 233, 168);">
+
+<script type="text/javascript">
+  
+	document.write("first name:"+" "+localStorage.getItem("fname"),); 
+    document.write("<br><br>");
+    document.write("last name:"+" "+ localStorage.getItem("lname")); 
+    document.write("<br><br>");
+    document.write("Address:"+" "+localStorage.getItem("add")); 
+    document.write("<br><br>");
+    document.write("video url:"+" "+localStorage.getItem("myVideo")); 
+    document.write("<br><br>");
+    //document.write('<video width="320" height="240" controls> <source src=' + localStorage.getItem("myVideo") +' id="myVideo" type="video/mp4">');
+    
+</script>
+<marquee>👈=====================================================================================================================================================================</marquee>
+<center>
+
+
+  <video width="320" height="240" controls>
+    <source src= "movie.mp4" id="myVideo" type="video/mp4">
+    
+  Your browser does not support the video tag.
+  </video><br><br>  
+  <marquee direction = "right"> =====================================================================================================================================================================👉</marquee></marquee>
+ 
+
+ 
+                                                              
+  
+<button onclick="getLocation()">Try It</button>
+
+<p id="demo"></p>
+
+  <script>
+    var x = document.getElementById("demo");
+    function getLocation() {
+      if (navigator.geolocation) {
+        navigator.geolocation.getCurrentPosition(showPosition);
+      } else {
+        x.innerHTML = "Geolocation is not supported by this browser.";
+      }
+    }
+    
+    function showPosition(position) {
+      x.innerHTML = "Latitude: " + position.coords.latitude +
+      "<br>Longitude: " + position.coords.longitude;
+    }
+
+    window.onload= function(){
+        const video= document.getElementById("myVideo");
+        const queryString =window.location.search;
+    }
+    </script>
+
+<marquee>👈=====================================================================================================================================================================</marquee>
+
+<audio controls>
+  <source src="Kaise Hua - Kabir Singh.ogg" type="audio/ogg">
+<source src="Kaise Hua - Kabir Singh.mp3" type="audio/mpeg">
+Your browser does not support the audio element.
+</audio><br><br>
+</center>
+</body>
+</html>
