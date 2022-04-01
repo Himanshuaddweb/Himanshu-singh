@@ -1,3 +1,29 @@
+<html>
+    <body>
+    <style>   
+        body{  
+    margin-top: 100px;  
+    margin-bottom: 100px;  
+    margin-right: 150px;  
+    margin-left: 80px;  
+    background-color: azure ;  
+    color: palevioletred;  
+    font-family: verdana;  
+    font-size: 100%  
+      
+        }  
+            h1 {  
+    color: indigo;  
+    font-family: verdana;  
+    font-size: 100%;  
+}  
+         h2 {  
+    color: indigo;  
+    font-family: verdana;  
+    font-size: 100%;  
+}</style>  
+</body>
+    </html>
 <?php
 $email=$_GET['email'];
 $con=mysqli_connect("localhost","root","","databases") or die("Error in Connection");

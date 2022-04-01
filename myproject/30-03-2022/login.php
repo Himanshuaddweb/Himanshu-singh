@@ -5,6 +5,28 @@
     <title>Insert data</title>
 </head>
 <body>
+<style>   
+        body{  
+    margin-top: 100px;  
+    margin-bottom: 100px;  
+    margin-right: 150px;  
+    margin-left: 80px;  
+    background-color: azure ;  
+    color: palevioletred;  
+    font-family: verdana;  
+    font-size: 100%  
+      
+        }  
+            h1 {  
+    color: indigo;  
+    font-family: verdana;  
+    font-size: 100%;  
+}  
+         h2 {  
+    color: indigo;  
+    font-family: verdana;  
+    font-size: 100%;  
+}</style>  
     <form method="post">
         email:<input type="text" name="email" /><br />
         PASSWORD:<input type="text" name="PASSWORD" /><br />
@@ -14,6 +36,9 @@
 </body>
 </html>
 <?php
+if(isset($_POST['Login'])){
+    setcookie("email",$_POST["email"],time()+3600);
+}
 if (isset($_POST['Login'])) {
     $email = $_POST['email'];
     $PASSWORD = $_POST['PASSWORD'];
